@@ -77,6 +77,133 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 img[src*="ti-location-pin"] {
   vertical-align: top !important;
 }
+</style><style>
+/* Modal de Formulário */
+.whatsapp-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.whatsapp-modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #1a1a1a;
+  padding: 40px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  color: #fff;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #f3dc89;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  color: #ccc;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #f3dc89;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #f3dc89;
+  background-color: #333;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-submit {
+  background-color: #25D366;
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: #20ba58;
+}
+
+.btn-cancel {
+  background-color: #444;
+  color: #fff;
+}
+
+.btn-cancel:hover {
+  background-color: #555;
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 12px;
+  margin-top: 3px;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
 </style></head>
 
 <body class="home wp-singular page-template-default page page-id-13 wp-theme-bricks brx-body bricks-is-frontend wp-embed-responsive">		<a class="skip-link" href="#brx-content">Pular para o conteúdo principal</a>
@@ -484,4 +611,140 @@ console.log('%cPixel de Rastreamento Ativo - Token: bf5206e2c13b48ada4e79ba8', '
   }
 }
 </style>
+<!-- WhatsApp Modal Form -->
+<div id="whatsappModal" class="whatsapp-modal">
+  <div class="modal-content">
+    <h2>📱 Fale Conosco</h2>
+    <p><strong>⚠️ Canal Exclusivo:</strong> Este é um canal exclusivo para clientes interessados em vender suas joias de ouro e prata. Por favor, preencha o formulário abaixo com suas informações.</p>
+    
+    <form id="whatsappForm">
+      <div class="form-group">
+        <label for="fullName">Nome Completo *</label>
+        <input type="text" id="fullName" name="fullName" required placeholder="Seu nome">
+        <div class="error-message" id="nameError">Por favor, insira seu nome</div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required placeholder="seu@email.com">
+        <div class="error-message" id="emailError">Por favor, insira um email válido</div>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Assunto *</label>
+        <select id="subject" name="subject" required>
+          <option value="">Selecione um assunto</option>
+          <option value="Vender Ouro">Vender Ouro</option>
+          <option value="Vender Prata">Vender Prata</option>
+          <option value="Vender Ouro e Prata">Vender Ouro e Prata</option>
+          <option value="Dúvida">Dúvida</option>
+          <option value="Outro">Outro</option>
+        </select>
+        <div class="error-message" id="subjectError">Por favor, selecione um assunto</div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Mensagem (Opcional)</label>
+        <textarea id="message" name="message" placeholder="Conte-nos mais sobre seu interesse..."></textarea>
+      </div>
+
+      <div class="modal-buttons">
+        <button type="button" class="btn-cancel" onclick="closeWhatsappModal()">Cancelar</button>
+        <button type="submit" class="btn-submit">Falar no WhatsApp</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+const whatsappModal = document.getElementById('whatsappModal');
+const whatsappForm = document.getElementById('whatsappForm');
+
+// Função para abrir o modal
+function openWhatsappModal(e) {
+  if (e) e.preventDefault();
+  whatsappModal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+// Função para fechar o modal
+function closeWhatsappModal() {
+  whatsappModal.classList.remove('show');
+  document.body.style.overflow = 'auto';
+  whatsappForm.reset();
+  document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+}
+
+// Fechar ao clicar fora do modal
+whatsappModal.addEventListener('click', function(e) {
+  if (e.target === whatsappModal) {
+    closeWhatsappModal();
+  }
+});
+
+// Validar e enviar formulário
+whatsappForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const fullName = document.getElementById('fullName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value.trim();
+  
+  let isValid = true;
+
+  // Validar nome
+  if (!fullName) {
+    document.getElementById('nameError').classList.add('show');
+    isValid = false;
+  } else {
+    document.getElementById('nameError').classList.remove('show');
+  }
+
+  // Validar email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    document.getElementById('emailError').classList.add('show');
+    isValid = false;
+  } else {
+    document.getElementById('emailError').classList.remove('show');
+  }
+
+  // Validar assunto
+  if (!subject) {
+    document.getElementById('subjectError').classList.add('show');
+    isValid = false;
+  } else {
+    document.getElementById('subjectError').classList.remove('show');
+  }
+
+  if (!isValid) return;
+
+  // Montar mensagem para WhatsApp
+  let waMessage = `Olá, meu nome é ${fullName}.\n\n`;
+  waMessage += `Email: ${email}\n`;
+  waMessage += `Assunto: ${subject}\n`;
+  if (message) waMessage += `\nMensagem: ${message}\n`;
+  waMessage += `\nGostaria de conversar com vocês!`;
+
+  // Redirecionar para WhatsApp
+  const waLink = `https://wa.me/5511968373043?text=${encodeURIComponent(waMessage)}`;
+  window.open(waLink, '_blank');
+  
+  closeWhatsappModal();
+});
+
+// Modificar todos os botões de WhatsApp para abrir o modal
+document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+  link.onclick = openWhatsappModal;
+  link.href = '#';
+});
+
+// Modificar o botão flutuante
+const floatingButton = document.getElementById('floating-whatsapp');
+if (floatingButton) {
+  floatingButton.querySelector('a').onclick = openWhatsappModal;
+  floatingButton.querySelector('a').href = '#';
+}
+</script>
 </body></html>
