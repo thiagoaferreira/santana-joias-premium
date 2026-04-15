@@ -204,11 +204,6 @@ img[src*="ti-location-pin"] {
 .error-message.show {
   display: block;
 }
-</style><style>
-/* Force background images to load */
-#brxe-yyiody { background-image: url(./wp-content/uploads/2025/10/bg-mobile.jpg) !important; }
-#brxe-xvjmnj { background-image: url(./wp-content/uploads/2025/10/BG-hader.jpg) !important; }
-[id*="brxe"] [style*="background-image"] { opacity: 1 !important; }
 </style></head>
 
 <body class="home wp-singular page-template-default page page-id-13 wp-theme-bricks brx-body bricks-is-frontend wp-embed-responsive">		<a class="skip-link" href="#brx-content">Pular para o conteúdo principal</a>
@@ -784,5 +779,32 @@ if ('IntersectionObserver' in window) {
   
   document.querySelectorAll('[data-src]').forEach(img => observer.observe(img));
 }
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Fix background image URLs
+  const bgMappings = {
+    '#brxe-yyiody': './wp-content/uploads/2025/10/bg-mobile.jpg',
+    '#brxe-xvjmnj': './wp-content/uploads/2025/10/BG-hader.jpg',
+  };
+  
+  for (let selector in bgMappings) {
+    const elem = document.querySelector(selector);
+    if (elem) {
+      elem.style.backgroundImage = 'url(' + bgMappings[selector] + ')';
+      console.log('✅ Background set for', selector);
+    }
+  }
+  
+  // Also force all elements with background-image in inline style
+  document.querySelectorAll('[style*="background-image"]').forEach(el => {
+    const style = el.getAttribute('style');
+    if (style.includes('url(')) {
+      // The URL is already there, just ensure it's visible
+      el.style.backgroundSize = el.style.backgroundSize || 'cover';
+      el.style.backgroundPosition = el.style.backgroundPosition || 'center';
+    }
+  });
+});
 </script>
 </body></html>
