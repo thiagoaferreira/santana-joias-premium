@@ -735,16 +735,13 @@ whatsappForm.addEventListener('submit', function(e) {
 });
 
 // Modificar todos os botões de WhatsApp para abrir o modal
-document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-  link.onclick = openWhatsappModal;
-  link.href = '#';
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+    link.onclick = function(e) {
+      e.preventDefault();
+      openWhatsappModal();
+    };
+  });
 });
-
-// Modificar o botão flutuante
-const floatingButton = document.getElementById('floating-whatsapp');
-if (floatingButton) {
-  floatingButton.querySelector('a').onclick = openWhatsappModal;
-  floatingButton.querySelector('a').href = '#';
-}
 </script>
 </body></html>
