@@ -744,4 +744,40 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+<script>
+// Lazy load images
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('[data-src]');
+  images.forEach(img => {
+    if (img.dataset.src) {
+      img.src = img.dataset.src;
+    }
+    if (img.dataset.srcset) {
+      img.srcset = img.dataset.srcset;
+    }
+    img.classList.remove('bricks-lazy-hidden');
+  });
+});
+
+// Intersection Observer para lazy loading adicional
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+        }
+        if (img.dataset.srcset) {
+          img.srcset = img.dataset.srcset;
+        }
+        img.classList.remove('bricks-lazy-hidden');
+        observer.unobserve(img);
+      }
+    });
+  });
+  
+  document.querySelectorAll('[data-src]').forEach(img => observer.observe(img));
+}
+</script>
 </body></html>
