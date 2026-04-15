@@ -462,4 +462,26 @@ console.log('%cPixel de Rastreamento Ativo - Token: bf5206e2c13b48ada4e79ba8', '
   };
 })();
 </script>
+<!-- Floating WhatsApp Button -->
+<div id="floating-whatsapp" style="position:fixed;bottom:20px;right:20px;z-index:9999;">
+  <a href="https://wa.me/5511968373043?text=Olá,%20vim%20pelo%20site!%20Gostaria%20de%20agendar%20uma%20avaliação%20de%20ouro/prata%20e%20tirar%20minhas%20dúvidas." target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;width:60px;height:60px;background-color:#25D366;border-radius:50%;box-shadow:0 4px 12px rgba(0,0,0,0.3);transition:all 0.3s ease;text-decoration:none;">
+    <img src="assets/icons/fa-whatsapp.svg" alt="WhatsApp" style="width:32px;height:32px;filter:brightness(0) invert(1);">
+  </a>
+</div>
+<style>
+#floating-whatsapp a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4) !important;
+}
+@media (max-width: 768px) {
+  #floating-whatsapp {
+    bottom: 15px;
+    right: 15px;
+  }
+  #floating-whatsapp a {
+    width: 50px;
+    height: 50px;
+  }
+}
+</style>
 </body></html>
