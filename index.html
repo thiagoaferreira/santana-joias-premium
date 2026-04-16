@@ -56,19 +56,34 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   display: none !important;
 }
 
-/* Fix: Parallax do garimpeiro com mesmo tamanho e estilo do invbqp */
+/* Fix: Parallax garimpeiro com mesmo estilo exato do invbqp */
 #brxe-opbkrh {
-  position: relative !important;
-  min-height: 100px !important;
-  margin-top: -1px !important;
-  margin-right: 0 !important;
-  margin-bottom: -1px !important;
-  margin-left: 0 !important;
-  background-image: url(./wp-content/uploads/2025/10/garimpeiro-garimpando-em-um-garimpo-de-ouro-no-rio-anzu-no-equador.webp) !important;
-  background-size: cover !important;
-  background-attachment: fixed !important;
-  border-top: 5px solid var(--bricks-color-ce897f) !important;
-  border-bottom: 5px solid var(--bricks-color-ce897f) !important;
+  position: relative;
+  min-height: 100px;
+  margin-top: -1px;
+  margin-right: 0;
+  margin-bottom: -1px;
+  margin-left: 0;
+  background-image: url(./wp-content/uploads/2025/10/garimpeiro-garimpando-em-um-garimpo-de-ouro-no-rio-anzu-no-equador.webp);
+  background-size: cover;
+  background-attachment: fixed;
+  border-top: 5px solid var(--bricks-color-ce897f);
+  border-bottom: 5px solid var(--bricks-color-ce897f);
+}
+
+:where(#brxe-opbkrh > *) {
+  position: relative;
+}
+
+#brxe-opbkrh::before {
+  background-image: linear-gradient(90deg, rgba(33, 33, 33, 0.41), rgba(33, 33, 33, 0.41));
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
 }
 
 /* Fix: Remover backgrounds da seção de credibilidade #brxe-xfvvoh */
