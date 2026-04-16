@@ -56,11 +56,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   display: none !important;
 }
 
-/* Fix: Remover imagem de fundo garimpeiro da seção credibilidade */
+/* Fix: Restaurar parallax do garimpeiro com visibilidade correta */
 #brxe-opbkrh {
-  background-image: none !important;
-  border-top: none !important;
-  border-bottom: none !important;
+  background-image: url(./wp-content/uploads/2025/10/garimpeiro-garimpando-em-um-garimpo-de-ouro-no-rio-anzu-no-equador.webp) !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  min-height: 300px !important;
 }
 
 /* Fix: Remover backgrounds da seção de credibilidade #brxe-xfvvoh */
