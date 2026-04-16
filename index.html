@@ -73,12 +73,25 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   background-image: none !important;
 }
 
-/* Fix: Ativar header sticky */
+/* Fix: Ativar header fixed */
 #brx-header.brx-sticky {
-  position: sticky !important;
+  position: fixed !important;
   top: 0 !important;
   z-index: 1000 !important;
   width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* Ajustar main para compensar o header fixo */
+main#brx-content {
+  margin-top: 80px;
+}
+
+/* Fix: Remover background gradiente do segundo container (Prata) */
+#brxe-rhubjq {
+  background-image: none !important;
+  background-color: #000000 !important;
 }
 </style>
 
