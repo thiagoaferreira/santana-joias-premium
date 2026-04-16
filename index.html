@@ -56,22 +56,19 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   display: none !important;
 }
 
-/* Fix: Restaurar parallax do garimpeiro com visibilidade correta */
-#brxe-opbkrh.bricks-lazy-hidden {
-  background-image: url(./wp-content/uploads/2025/10/garimpeiro-garimpando-em-um-garimpo-de-ouro-no-rio-anzu-no-equador.webp) !important;
-}
-
+/* Fix: Parallax do garimpeiro com mesmo tamanho e estilo do invbqp */
 #brxe-opbkrh {
+  position: relative !important;
+  min-height: 100px !important;
+  margin-top: -1px !important;
+  margin-right: 0 !important;
+  margin-bottom: -1px !important;
+  margin-left: 0 !important;
   background-image: url(./wp-content/uploads/2025/10/garimpeiro-garimpando-em-um-garimpo-de-ouro-no-rio-anzu-no-equador.webp) !important;
   background-size: cover !important;
   background-attachment: fixed !important;
-  min-height: 300px !important;
-  background-color: #000000 !important;
-}
-
-/* Remover overlay do pseudo-elemento */
-#brxe-opbkrh::before {
-  display: none !important;
+  border-top: 5px solid var(--bricks-color-ce897f) !important;
+  border-bottom: 5px solid var(--bricks-color-ce897f) !important;
 }
 
 /* Fix: Remover backgrounds da seção de credibilidade #brxe-xfvvoh */
