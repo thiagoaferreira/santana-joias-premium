@@ -172,7 +172,26 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
   ttq.load('D7UHG7JC77UDOFSGETMG');
   ttq.page();
+  ttq.track('ViewContent', {
+    contents: [{ content_id: 'venda-ouro-prata', content_type: 'product', content_name: 'Venda seu Ouro ou Prata - Santana Joias' }],
+    value: 0,
+    currency: 'BRL'
+  });
 }(window, document, 'ttq');
+</script>
+<script>
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('a');
+  if (!el) return;
+  var href = el.href || '';
+  if (href.indexOf('wa.me') > -1 || href.indexOf('whatsapp') > -1) {
+    ttq.track('Contact', {
+      contents: [{ content_id: 'venda-ouro-prata', content_type: 'product', content_name: 'Venda seu Ouro ou Prata - Santana Joias' }],
+      value: 0,
+      currency: 'BRL'
+    });
+  }
+});
 </script>
 <!-- TikTok Pixel Code End --></head>
 
